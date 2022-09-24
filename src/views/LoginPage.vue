@@ -90,7 +90,7 @@
   @media screen and (min-width: 375px) {
     padding-left: 2rem;
   }
-  media a {
+  a {
     color: #5186ec;
   }
 }
