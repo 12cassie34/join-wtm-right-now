@@ -2,15 +2,18 @@
 import router from "@/router";
 import { ref } from "vue";
 
+import isSuccessRegisterd from "../assets/is-success.svg";
+
 const genderOptions = ["Male", "Female", "Other"];
 
-const currentStep = ref(2);
+const currentStep = ref(3);
 const moveToNextStep = () => currentStep.value++;
 const moveToPrevStep = () => {
   currentStep.value === 1
     ? router.push({ path: "/login" }) // TODO: confirm the route
     : currentStep.value--;
 };
+const backToHome = () => router.push({ path: "/login" }); // TODO: confirm the route
 
 const email = ref("");
 const password = ref("");
@@ -139,11 +142,27 @@ const step2Checkbox = [
               :id="checkbox.id"
               :name="checkbox.id"
             />
-            <label class="checkbox-label" :for="checkbox.id">{{ checkbox.label }}</label>
+            <label class="checkbox-label" :for="checkbox.id">{{
+              checkbox.label
+            }}</label>
           </div>
         </div>
       </div>
-      <v-btn @click="moveToNextStep" block color="primary"> Next </v-btn>
+      <div v-if="currentStep === 3" class="step-3">
+        <img :src="isSuccessRegisterd" alt="Registration completed!" />
+        <h2>Registration completed!</h2>
+      </div>
+      <v-btn
+        @click="moveToNextStep"
+        v-if="currentStep < 3"
+        block
+        color="primary"
+      >
+        Next
+      </v-btn>
+      <v-btn @click="backToHome" v-if="currentStep === 3" block color="primary">
+        Back to Home
+      </v-btn>
     </form>
   </main>
 </template>
@@ -196,12 +215,20 @@ label {
 }
 
 .checkbox-label {
-    font-weight: 300;
-    font-size: 1rem;
-    margin-left: 0.5rem;
+  font-weight: 300;
+  font-size: 1rem;
+  margin-left: 0.5rem;
 }
 
 .terms-checkbox {
+  margin-bottom: 2.5rem;
+}
+
+.step-3 h2 {
+    display: flex;
+    justify-content: center;
+    color: #696D72;
+    font-weight: 700;
     margin-bottom: 2.5rem;
 }
 </style>
