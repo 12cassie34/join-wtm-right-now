@@ -6,7 +6,7 @@ import * as directives from "vuetify/directives";
 
 import App from "./App.vue";
 import router from "./router";
-
+import "vuetify/styles";
 import "./assets/main.css";
 
 const app = createApp(App);
