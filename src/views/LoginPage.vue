@@ -5,7 +5,7 @@
       <img
         src="https://developers.google.com/womentechmakers/images/wtm-logo_96.png"
         alt="logo"
-        class="logo__img"
+        class="logo__img mb-2"
       />
       <h2 class="logo__text text-grey">Women<br />Techmakers</h2>
     </div>
