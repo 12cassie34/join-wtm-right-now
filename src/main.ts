@@ -10,7 +10,21 @@ import router from "./router";
 import "./assets/main.css";
 
 const app = createApp(App);
-const vuetify = createVuetify({ components, directives });
+const vuetify = createVuetify({
+  components,
+  directives,
+  theme: {
+    themes: {
+      light: {
+        dark: false,
+        colors: {
+          primary: "#5186EC",
+          secondary: "#6DE4B9",
+        },
+      },
+    },
+  },
+});
 
 app.use(vuetify);
 app.use(createPinia());
