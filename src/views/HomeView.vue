@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import { useRouter, useRoute } from "vue-router";
+const router = useRouter();
+const route = useRoute();
+setTimeout(() => {
+  router.push({ name: "loginPage" });
+}, 5000);
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <main>homePage</main>
 </template>
