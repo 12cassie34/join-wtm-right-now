@@ -43,9 +43,8 @@
 
 <style scoped lang="scss">
 .login {
-  // padding: 13px;
   max-width: 320px;
-  margin: 0 auto;
+  margin: 25% auto 0px;
 }
 
 .google {
