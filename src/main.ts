@@ -6,6 +6,7 @@ import * as directives from "vuetify/directives";
 
 import App from "./App.vue";
 import router from "./router";
+import "vuetify/styles";
 
 import "./assets/main.css";
 
@@ -20,6 +21,7 @@ const vuetify = createVuetify({
         colors: {
           primary: "#5186EC",
           secondary: "#6DE4B9",
+          heading: "none",
         },
       },
     },

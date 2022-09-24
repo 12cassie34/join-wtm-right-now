@@ -9,8 +9,5 @@ import { RouterLink, RouterView } from "vue-router";
     <RouterLink to="/login">About</RouterLink>
     <RouterLink to="/signUpForm">Sign Up Form</RouterLink>
   </nav>
-  <v-btn color="secondary">
-      Primary
-    </v-btn>
   <RouterView />
 </template>
