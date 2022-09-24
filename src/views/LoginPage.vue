@@ -34,7 +34,7 @@
       <div class="info">
         <p class="">
           Already have an account ?
-          <a href="#" class="red--text">Sign in here.</a>
+          <a href="#" class="red--text">login in here.</a>
         </p>
       </div>
     </div>
