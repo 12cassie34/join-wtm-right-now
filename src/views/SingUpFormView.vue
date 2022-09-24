@@ -6,14 +6,14 @@ import isSuccessRegisterd from "../assets/is-success.svg";
 
 const genderOptions = ["Male", "Female", "Other"];
 
-const currentStep = ref(3);
+const currentStep = ref(1);
 const moveToNextStep = () => currentStep.value++;
 const moveToPrevStep = () => {
   currentStep.value === 1
-    ? router.push({ path: "/login" }) // TODO: confirm the route
+    ? router.push({ path: "/" })
     : currentStep.value--;
 };
-const backToHome = () => router.push({ path: "/login" }); // TODO: confirm the route
+const backToHome = () => router.push({ path: "/" });
 
 const email = ref("");
 const password = ref("");
@@ -106,7 +106,9 @@ const step2Checkbox = [
             color="primary"
             variant="outlined"
             density="compact"
-            :placeholder="input.placeholder"
+            single-line
+            :label="input.placeholder"
+            class="text-input"
           ></v-text-field>
         </div>
       </div>
@@ -225,10 +227,10 @@ label {
 }
 
 .step-3 h2 {
-    display: flex;
-    justify-content: center;
-    color: #696D72;
-    font-weight: 700;
-    margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+  color: #696d72;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
 }
 </style>
