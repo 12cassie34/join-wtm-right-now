@@ -8,5 +8,8 @@ import { RouterLink, RouterView } from "vue-router";
     <RouterLink to="/about">About</RouterLink>
     <RouterLink to="/login">About</RouterLink>
   </nav>
+  <v-btn color="secondary">
+      Primary
+    </v-btn>
   <RouterView />
 </template>
