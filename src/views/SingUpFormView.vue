@@ -1,14 +1,30 @@
 <script setup lang="ts">
+import router from "@/router";
 import { ref } from "vue";
 
-const currentStep = ref(1);
-const moveNextStep = () => currentStep.value++;
+const genderOptions = ["Male", "Female", "Other"];
+
+const currentStep = ref(2);
+const moveToNextStep = () => currentStep.value++;
+const moveToPrevStep = () => {
+  currentStep.value === 1
+    ? router.push({ path: "/login" }) // TODO: confirm the route
+    : currentStep.value--;
+};
 
 const email = ref("");
 const password = ref("");
 const confirmPassword = ref("");
 
-const inputs = [
+const name = ref("");
+const phone = ref("");
+const gender = ref("Male");
+const isAgreeTerm = ref(true);
+const isAgreeEmailPromo = ref(true);
+
+const changeGender = (option: string) => (gender.value = option);
+
+const step1Inputs = [
   {
     label: "Email",
     isRequired: true,
@@ -30,27 +46,54 @@ const inputs = [
     isHiddenText: true,
     isShowPassword: false,
     inputValue: confirmPassword,
-    placeholder: "as same as password",
+    placeholder: "As same as password",
+  },
+];
+
+const step2Inputs = [
+  {
+    label: "Name",
+    inputValue: name,
+    placeholder: "Your name",
+  },
+  {
+    label: "Phone",
+    inputValue: phone,
+    placeholder: "+886 91919119",
+  },
+];
+
+const step2Checkbox = [
+  {
+    id: "isAgreeTerm",
+    checkboxValue: isAgreeTerm,
+    label:
+      "I have read and agreed to be bound by the above terms and conditions",
+  },
+  {
+    id: "isAgreeEmailPromo",
+    checkboxValue: isAgreeEmailPromo,
+    label: "I agree to receive information by email",
   },
 ];
 </script>
 
 <template>
   <main>
-    <v-btn variant="text" color="primary">
+    <v-btn @click="moveToPrevStep" variant="text" color="primary">
       <span>&#x3c;</span>
       Back
     </v-btn>
     <div class="step-indicator">
       <div class="step" :class="currentStep === 1 && 'active'">1</div>
       <div class="link"></div>
-      <div class="step">2</div>
+      <div class="step" :class="currentStep === 2 && 'active'">2</div>
       <div class="link"></div>
-      <div class="step">3</div>
+      <div class="step" :class="currentStep === 3 && 'active'">3</div>
     </div>
     <form>
-      <div v-if="currentStep === 1" class="step-1">
-        <div v-for="(input, index) in inputs" :key="index">
+      <div v-if="currentStep === 1">
+        <div v-for="(input, index) in step1Inputs" :key="index">
           <label
             >{{ input.label }}
             <span v-if="input.isRequired" class="required-star">*</span></label
@@ -62,13 +105,45 @@ const inputs = [
             density="compact"
             :placeholder="input.placeholder"
           ></v-text-field>
-          <div>
-            <v-icon>mdi-eye</v-icon>
-            <v-icon large color="primary"> mdi-domain </v-icon>
+        </div>
+      </div>
+      <div v-if="currentStep === 2">
+        <div v-for="(input, index) in step2Inputs" :key="index">
+          <label>{{ input.label }}</label>
+          <v-text-field
+            v-model="input.inputValue.value"
+            color="primary"
+            variant="outlined"
+            density="compact"
+            :placeholder="input.placeholder"
+          ></v-text-field>
+        </div>
+        <div>
+          <label>Gender</label>
+          <div class="gender-options">
+            <v-btn
+              @click="changeGender(option)"
+              v-for="option in genderOptions"
+              :key="option"
+              :variant="gender === option ? 'contained' : 'outlined'"
+              color="primary"
+              >{{ option }}</v-btn
+            >
+          </div>
+        </div>
+        <div class="terms-checkbox">
+          <div v-for="(checkbox, index) in step2Checkbox" :key="index">
+            <input
+              v-model="checkbox.checkboxValue.value"
+              type="checkbox"
+              :id="checkbox.id"
+              :name="checkbox.id"
+            />
+            <label class="checkbox-label" :for="checkbox.id">{{ checkbox.label }}</label>
           </div>
         </div>
       </div>
-      <v-btn @click="moveNextStep" block color="primary"> Next </v-btn>
+      <v-btn @click="moveToNextStep" block color="primary"> Next </v-btn>
     </form>
   </main>
 </template>
@@ -112,5 +187,21 @@ label {
 }
 .required-star {
   color: #fc7070;
+}
+
+.gender-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+}
+
+.checkbox-label {
+    font-weight: 300;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+.terms-checkbox {
+    margin-bottom: 2.5rem;
 }
 </style>
