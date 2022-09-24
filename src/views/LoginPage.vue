@@ -85,9 +85,9 @@
   }
 }
 .info {
-  padding-left: 0.75rem;
+  padding-left: 2rem;
   font-size: 8px;
-  @media screen and (min-width: 375px) {
+  @media screen and (min-width: 330px) {
     padding-left: 2rem;
   }
   a {
