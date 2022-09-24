@@ -2,7 +2,7 @@
 
 <div align="center">
   <img src="https://developers.google.com/static/womentechmakers/images/home-icon-members.svg" width="200"/>
-  <h1>wtm</h1>
+  <h1>WTM</h1>
   <p>Google's Women Techmakers program provides visibility, community, and resources for women in technology.</p>
   
   [![npm version](https://badgen.net/npm/v/@faker-js/faker)](https://www.npmjs.com/package/@faker-js/faker)
@@ -12,6 +12,10 @@
   [![Chat on Discord](https://img.shields.io/badge/chat-discord-blue?style=flat&logo=discord)](https://chat.fakerjs.dev)
   [![Open Collective](https://img.shields.io/opencollective/backers/fakerjs)](https://opencollective.com/fakerjs#section-contributors)
   [![sponsor](https://img.shields.io/opencollective/all/fakerjs?label=sponsors)](https://opencollective.com/fakerjs)
+</div>
+
+<div align="center">
+  <p>Membership empowers women in their careers by providing access to curated resources and events, as well as information and tools from Google, our partners, and the global tech ecosystem</p>
 </div>
 
 
