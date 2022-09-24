@@ -7,6 +7,7 @@ import { RouterLink, RouterView } from "vue-router";
     <RouterLink to="/">Home</RouterLink>
     <RouterLink to="/about">About</RouterLink>
     <RouterLink to="/login">About</RouterLink>
+    <RouterLink to="/signUpForm">Sign Up Form</RouterLink>
   </nav>
   <v-btn color="secondary">
       Primary
