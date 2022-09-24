@@ -31,7 +31,7 @@
       >
         Sign up</v-btn
       >
-      <div class="info pl-3">
+      <div class="info">
         <p class="">
           Already have an account ?
           <a href="#" class="red--text">Sign in here.</a>
@@ -42,6 +42,12 @@
 </template>
 
 <style scoped lang="scss">
+.login {
+  // padding: 13px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
 .google {
   background-image: url("@/assets/google.png");
   background-position: center;
@@ -49,12 +55,6 @@
   background-size: cover;
   width: 20px;
   height: 20px;
-}
-
-.login {
-  // padding: 13px;
-  max-width: 320px;
-  margin: 0 auto;
 }
 
 .logo {
@@ -85,8 +85,12 @@
   }
 }
 .info {
+  padding-left: 0.75rem;
   font-size: 8px;
-  a {
+  @media screen and (min-width: 375px) {
+    padding-left: 2rem;
+  }
+  media a {
     color: #5186ec;
   }
 }
